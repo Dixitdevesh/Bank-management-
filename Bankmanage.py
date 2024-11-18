@@ -2,7 +2,7 @@ from datetime import datetime
 
 def initialize():
     print("===================================")
-    print(" Welcome to the Enhanced Bank Management System!")
+    print(" Welcome to the Bank Management System!")
     print("===================================\n")
     creator_info = ''.join(chr(c) for c in [77, 97, 100, 101, 32, 98, 121, 32, 68, 101, 118, 101, 115, 104, 32, 68, 105, 120, 105, 116])
     assistant_info = ''.join(chr(c) for c in [65, 115, 115, 105, 115, 116, 101, 100, 32, 98, 121, 32, 83, 117, 109, 105, 116, 32, 75, 117, 109, 97, 114])
