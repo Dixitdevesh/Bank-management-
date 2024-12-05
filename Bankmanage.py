@@ -4,8 +4,9 @@ def initialize():
     print("===================================")
     print(" Welcome to the Bank Management System!")
     print("===================================\n")
-    creator_info = ''.join(chr(c) for c in [77, 97, 100, 101, 32, 98, 121, 32, 68, 101, 118, 101, 115, 104, 32, 68, 105, 120, 105, 116])
-    assistant_info = ''.join(chr(c) for c in [65, 115, 115, 105, 115, 116, 101, 100, 32, 98, 121, 32, 83, 117, 109, 105, 116, 32, 75, 117, 109, 97, 114])
+    print("Presented in Kanha Makhan Public School\n")
+    creator_info = "Made by Poonam"
+    assistant_info = "Assisted by Khushi"
     print(f"System initialized by: {creator_info}")
     print(f"{assistant_info}")
 
@@ -35,13 +36,21 @@ def log_transaction(action, name, amount, balance):
         f.write(f"{datetime.now()},{action},{name},{amount},{balance}\n")
 
 def create_account(accounts):
-    account = {}
-    account['n'] = input("Enter account holder's name: ")
-    account['b'] = 0
-    account['locked'] = False
-    accounts.append(account)
-    save_all_accounts(accounts)
-    print(f"\nAccount created successfully for {account['n']} with initial balance of {account['b']}.")
+    while True:
+        account_name = input("Enter account holder's name: ")
+        duplicate = False
+        for account in accounts:
+            if account['n'] == account_name:
+                duplicate = True
+                break
+        if duplicate:
+            print("Account holder's name must be unique. Please try again.")
+        else:
+            account = {'n': account_name, 'b': 0, 'locked': False}
+            accounts.append(account)
+            save_all_accounts(accounts)
+            print(f"\nAccount created successfully for {account['n']} with initial balance of {account['b']}.")
+            break
 
 def deposit(account, accounts):
     if account['locked']:
@@ -241,8 +250,10 @@ def main_menu():
         elif choice == '9':
             help_menu()
         elif choice == '10':
-            print("Thank you for using the Bank Management System. Goodbye!")
+            print("Exiting program. Goodbye!")
             break
         else:
             print("Invalid option. Please try again.")
-main_menu()
+
+if __name__ == "__main__":
+    main_menu()
